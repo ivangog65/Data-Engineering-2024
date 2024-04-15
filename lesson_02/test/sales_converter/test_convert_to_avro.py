@@ -1,6 +1,6 @@
 import os.path
 
-from lesson_02.sales_loader.main import app2
+from lesson_02.sales_loader.sales_converter_api import sales_converter_app
 
 
 def test_convert_to_avro():
@@ -12,9 +12,7 @@ def test_convert_to_avro():
         "stg_dir": stg_dir
     }
 
-    avro_converter_app = app2
-
-    with avro_converter_app.test_client() as client:
+    with sales_converter_app.test_client() as client:
         response = client.post('/', json=request_body)
         assert 201 == response.status_code
         assert os.listdir(stg_dir) == ['sales_2022-01-01_1.avro']

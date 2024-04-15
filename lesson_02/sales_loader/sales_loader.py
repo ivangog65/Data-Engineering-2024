@@ -11,7 +11,6 @@ def write_response_to_file(response_json: dict, raw_dir: str, date: str, page_nu
     file_path = os.path.join(raw_dir, file_name)
     with open(file_path, 'w') as f:
         json.dump(response_json, f)
-        f.close()
 
 
 def load_sales_data(date: str, raw_dir: str):
